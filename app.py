@@ -64,6 +64,7 @@ def enterexpense(id):
     global balance,updated
     datetoday = str(datetime.today().date())
     user = users.find_one({"_id":ObjectId(id)})
+    balance = list(expenses.find({"date":datetoday}))[0]["balance"]
     try:
         amount = list(expenses.find({"date":datetoday}))[0]["amount"]
     except:
@@ -78,9 +79,10 @@ def enterexpense(id):
             amt = int(request.form.get("amt"))
         except:
             flash("Enter a valid amount")
-        
+        if(amt > balance):
+            flash("Enter a valid amount")
+            return redirect(f"/{id}")
         if(amt != None):
-            balance = list(expenses.find({"date":datetoday}))[0]["balance"]
             balance-=amt
             try:
                 user[datetoday][expense] = amt

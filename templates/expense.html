@@ -3,7 +3,7 @@
 {%block content%}
     <div class="container pt-3">
         {%for i in get_flashed_messages()%}
-            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>{{i}}</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
