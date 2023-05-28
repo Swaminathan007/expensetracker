@@ -1,0 +1,36 @@
+{%extends "base.html"%}
+{%block title%}{{name}}{%endblock%}
+{%block content%}
+    <div class="container pt-3">
+        {%for i in get_flashed_messages()%}
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{i}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {%endfor%}
+    </div>
+    <div class="container shadow rounded mt-5 px-5 p-4">
+        <h2>Hello, {{name|capitalize}}</h2>
+        <div class="card p-4">
+            <h4 >Enter your expense</h4>
+            <div class="card-body">
+                <div class="container rounded bg-success shadow p-3 text-left">
+                    <form method="POST">
+                        <div class="mb-3">
+                            <label for="expense" class="form-label">Expense</label>
+                            <input type="text" class="form-control" i="expense" name="expense">
+                        </div>
+                        <div class="mb-3">
+                            <label for="amt" class="form-label">Amount</label>
+                            <input type="text" class="form-control" id="amt" name="amt">
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+          </div>
+    </div>
+    
+{%endblock%}

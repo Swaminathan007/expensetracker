@@ -1,0 +1,18 @@
+{%extends "base.html"%}
+{%block title%}Enter amount for today{%endblock%}
+{%block content%}
+    <style>
+
+        .container{
+            width:50%;
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+        }
+    </style>
+    <div class="container-md card text-center shadow-sm p-4 w-60 rounded">
+        <h2>Amount for today not entered</h2>
+        <a href="/enteramounttoday" class="btn btn-outline-info">Enter amount for today</a>
+    </div>
+{%endblock%}

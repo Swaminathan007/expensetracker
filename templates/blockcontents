@@ -1,0 +1,4 @@
+{%extends "base.html"%}
+{%block title%}Expenses{%endblock%}
+{%block content%}
+{%endblock%}

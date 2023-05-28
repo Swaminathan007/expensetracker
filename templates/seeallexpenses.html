@@ -1,0 +1,22 @@
+{%extends "base.html"%}
+{%block title%}All expenses{%endblock%}
+{%block content%}
+    <style>
+        .card:hover{
+            transform: scale(1.05);
+            transition-duration: 0.3s;
+        }
+
+    </style>
+    <div class="container mt-5 p-3">
+        <h2>All expenses</h2>
+        <div class="container shadow text-center p-3">
+            {%for i in dates%}
+                <div class="card p-3 m-4 shadow">
+                   <a href="/onthatday/{{i['date']}}" style="text-decoration: none;color:black;">{{i["date"]}}</a> 
+                </div>
+            {%endfor%}
+        </div>
+    </div>
+    
+{%endblock%}

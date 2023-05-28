@@ -1,0 +1,47 @@
+{%extends "base.html"%}
+{%block title%}Today's expenses{%endblock%}
+{%block content%}
+    <div class="container p-5 shadow rounded mt-5 w-70">
+        <h3>Expenses done today</h3> 
+        <div class="container text-left">
+            <strong>Date</strong>:{{datetoday}}
+        </div>
+        <div class="container shadow-sm bg-dark d-flex flex-wrap justify-content-flex-start align-items-center p-3">
+            {%if expensestoday%}
+                {%for i in expensestoday%}
+                    <div class="card shadow-lg m-3" style="width:15rem;">
+                        <div class="card-header">
+                            <strong>{{i["Name"]}}</strong>
+                        </div>
+                        <div class="card-body">
+                            {%if i[datetoday]%}
+                                {%for j in i[datetoday]%}
+                                <strong style="text-transform: capitalize;">{{j}}</strong> : {{i[datetoday][j]}}
+                                <br>
+                                {%endfor%}
+                            {%endif%}
+                        </div>
+                    </div>
+                {%endfor%}
+            {%else%}
+            <div class="container text-center">
+                <h4>No expenses today</h4>
+            </div>
+            {%endif%}
+        </div>
+        {%if balance%}
+        <div class="container text-center">
+            <strong>Balance available</strong>: ₹{{balance}}
+        </div>
+        {%else%}
+        <div class="container text-center">
+            Amount not entered for today...
+            <a href="/enteramounttoday">plese enter amount for today</a>
+        </div>
+        {%endif%}
+        
+        <div class="container text-center">
+            <a href="/">Go to home</a>
+        </div>
+    </div>
+{%endblock%}

@@ -1,0 +1,20 @@
+{%extends "base.html"%}
+{%block title%}Enter today's amount{%endblock%}
+{%block content%}
+    <div class="container pt-5">
+        <div class="shadow mb-3 p-5">
+            <h3>Date:{{date}}</h3>
+            <div class="container d-flex bg-primary h-80 w-60 justify-content-center align-items-center">
+                <div class="container mb-5 p-3">
+                    <form method = "post">
+                        <div class="mb-3 mt-3">
+                            <label for="amt" class="form-label">Amount</label>
+                            <input type="text" class="form-control" id="amt" placeholder="Enter amount" name="amt">
+                          </div>
+                          <button type="submit" class="btn btn-danger">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{%endblock%}

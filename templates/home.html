@@ -1,0 +1,44 @@
+{%extends "base.html"%}
+{%block title%}Expenses{%endblock%}
+{%block content%}
+    <style>
+        .name{
+            text-transform: capitalize;
+            display: block;
+        }
+    </style>
+    <div class="container pt-5 shadow-lg p-3 mt-4 mb-2">
+        {%for i in get_flashed_messages()%}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>{{i}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {%endfor%}
+        <div class="d-flex justify-content-center align-items-center mb-4">
+            {%if disabled%}
+                <a href="/enteramounttoday" class="btn btn-primary disabled" disabled>Enter Today's amount</a>
+            {%else%}
+                <a href="/enteramounttoday" class="btn btn-primary">Enter Today's amount</a>
+            {%endif%}
+        </div>
+        <div class="d-flex justify-content-center align-items-left  flex-column bd-highlight mb-3">
+            {%for i in Users%} 
+                <div class="p-2 bd-highlight shadow mb-3 p-3">
+                    <a href="/{{i['_id']}}" style="text-decoration: none;color: black;"><span class="name"> <strong>{{i['Name']}}</strong>  </span></a>  
+                </div>
+            {%endfor%}
+        </div>
+        <div class="container mb-4 shadow p-3">
+            {%if balance%}
+               Today's Balance:₹{{balance}}
+               <a href="/seetodaysexpenses">See expenses made today</a>
+            {%else%}
+                <p>Add today's amount!!</p> 
+            {%endif%}
+            
+        </div>
+        <div class="container text-center mb-2">
+            <a href="/seeallexpenses" type="button" class="btn btn-outline-success">See all expenses</a>
+        </div>
+    </div>
+{%endblock%}
